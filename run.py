@@ -1,17 +1,11 @@
 from flask import Flask, render_template, request
-# import logging
-# from loader.loader import loader_blueprint
-# from main.main import main_blueprint
-
+import logging
 from functions.func.utils import get_posts_all, get_comments_by_post_id, get_post_by_pk, search_for_posts, \
     get_posts_by_user
 
 app = Flask(__name__)
-# # подключаем логирование в файл и конфигурируем уровень логирования
-# logging.basicConfig(filename='log.txt', level=logging.INFO, encoding='utf-8')
-# # регистрируем blueprint
-# app.register_blueprint(main_blueprint)
-# app.register_blueprint(loader_blueprint)
+# подключаем логирование в файл и конфигурируем уровень логирования
+logging.basicConfig(filename='log.txt', level=logging.INFO, encoding='utf-8')
 
 path_posts = "data/data.json"
 path_comments = "data/comments.json"
@@ -57,6 +51,14 @@ def users_posts(username):
     """
     posts = get_posts_by_user(path_posts, username)
     return render_template("user-feed.html", posts=posts)
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return f"Страница не найдена ошибка {error}", 404
+
+@app.errorhandler(500)
+def int_server_error(error):
+    return f"Ошибка на стороне сервера: {error}", 500
 
 if __name__ == '__main__':
     app.run()
