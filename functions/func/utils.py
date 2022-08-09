@@ -22,14 +22,14 @@ def get_posts_all(path_posts):
     return load_data(path_posts)
 
 
-def get_posts_by_user(path_post, poster_name):
+def get_posts_by_user(path_posts, poster_name):
     """
     возвращает все посты пользователя
-    :param path_post:
+    :param path_posts:
     :param poster_name:
     :return:
     """
-    posts = load_data(path_post)
+    posts = load_data(path_posts)
     posts_user = []
 
     try:
@@ -93,3 +93,4 @@ def get_post_by_pk(path_posts, pk):
     for post in posts:
         if post["pk"] == pk:
             return post
+

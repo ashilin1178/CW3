@@ -28,7 +28,7 @@
     <div class="search">
       <form action="/search" class="search__form">
         <label>
-          <input type="search" class="search__input">
+          <input type="search" name="s" class="search__input">
         </label>
       </form>
     </div>
@@ -37,7 +37,7 @@
       {% for post in posts %}
         <div class="items__item item">
           <div class="item__top">
-            <a href="/templates/user-feed.html" class="item__head">
+            <a href="/users/{{post.poster_name}}" class="item__head">
               <div class="item__ava-wrap">
                 <img src= {{post.poster_avatar}} alt="" class="item__ava" width="47">
               </div>
@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="item__post-bottom">
-            <a href="/post/{{post.bk}}" class="item__btn-more">Подробнее</a>
+            <a href="/post/{{post.pk}}" class="item__btn-more">Подробнее</a>
             <button type="button" class="item__bookmark-btn">
               <img src="../static/img/bookmark.png" alt="" class="item__bookmark-icon" width="24">
             </button>

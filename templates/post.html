@@ -28,9 +28,9 @@
     <section class="items">
       <div class="items__item item item--post">
         <div class="item__top">
-          <a href="/templates/user-feed.html" class="item__head">
+          <a href="/users/{{post.poster_name}}" class="item__head">
             <div class="item__ava-wrap">
-              <img src="../static/img/ava1.png" alt="" class="item__ava" width="47">
+              <img src={{post.poster_avatar}} alt="" class="item__ava" width="47">
             </div>
             <span class="item__username">{{post.poster_name}}</span>
           </a>
@@ -51,7 +51,7 @@
             <p class="item__comments-counter">{{len_comm}}</p>
             <div class="item__counter">
               <img src="../static/img/eye.png" alt="" class="item__counter-icon" width="26">
-              <span class="item__counter-text">1023</span>
+              <span class="item__counter-text">{{post.views_count}}</span>
             </div>
           </div>
 
@@ -61,11 +61,7 @@
               <b>{{comment.commenter_name}}</b> {{comment.comment}}
             </p>
             {% endfor %}
-<!--            <p class="item__comment">-->
-<!--              <b>user 2:</b> еще один комментарий-->
-<!--            </p>-->
-<!--            <p class="item__comment">-->
-<!--              <b>user 3:</b> и&nbsp;какой-то коммент еще-->
+
             </p>
           </div>
         </div>
