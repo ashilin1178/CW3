@@ -95,6 +95,7 @@ def get_post_by_pk(path_posts, pk):
         if post["pk"] == pk:
             return post
 
+
 def get_log():
     logger_api = logging.getLogger()
     file_handler = logging.FileHandler(filename="log/api.log", mode='a', encoding='utf-8')
@@ -102,4 +103,3 @@ def get_log():
     file_handler.setFormatter(formatter_api)
     logger_api.addHandler(file_handler)
     pass
-

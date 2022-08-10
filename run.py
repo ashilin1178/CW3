@@ -57,16 +57,30 @@ def users_posts(username):
 
 @app.errorhandler(404)
 def page_not_found(error):
+    """
+    вывод ошибки 404
+    :param error:
+    :return:
+    """
     return f"Страница не найдена ошибка {error}", 404
 
 
 @app.errorhandler(500)
 def int_server_error(error):
+    """
+    вывод ошибки 500
+    :param error:
+    :return:
+    """
     return f"Ошибка на стороне сервера: {error}", 500
 
 
 @app.route('/api/posts')
 def get_all_posts_json():
+    """
+    возвращает список постов в формате json
+    :return:
+    """
 
     posts = get_posts_all(path_posts)
     get_log()
@@ -75,7 +89,11 @@ def get_all_posts_json():
 
 @app.route('/api/posts/<int:post_id>')
 def get_post_by_pk_json(post_id):
-
+    """
+    возвращает оди пост в формате json
+    :param post_id:
+    :return:
+    """
     post = get_post_by_pk(path_posts, post_id)
     get_log()
     return jsonify(post)
